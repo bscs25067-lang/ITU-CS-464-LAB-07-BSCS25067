@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class SceneNavButton : MonoBehaviour
@@ -9,6 +10,9 @@ public class SceneNavButton : MonoBehaviour
     {
         if (targetSceneName == "EXIT")
         {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
             Application.Quit();
             return;
         }

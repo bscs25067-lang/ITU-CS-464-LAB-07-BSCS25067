@@ -1083,6 +1083,10 @@ PrefabInstance:
       value: PF_UI_Button
       objectReference: {fileID: 0}
     - target: {fileID: 2373646231590322552, guid: 0f757322a6ba0bb4db15e794d1bfc35e, type: 3}
+      propertyPath: m_text
+      value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373646231590322552, guid: 0f757322a6ba0bb4db15e794d1bfc35e, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4288521380
       objectReference: {fileID: 0}
@@ -1164,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8475903241579234653, guid: 0f757322a6ba0bb4db15e794d1bfc35e, type: 3}
       propertyPath: targetSceneName
-      value: 03_Story
+      value: 03_StoryMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

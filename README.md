@@ -26,16 +26,31 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 ---
 
 ### Screen 02: Main Menu (`02_MainMenu.unity`)
-- **Purpose:** Serves as the central navigation hub connecting Story Mode, Bonuses, Online Store, Options, and Exit.
+- **Purpose:** Serves as the central navigation hub connecting Story Mode, Bonuses, Online Store, Options, and Exit[cite: 5].
 - **UI/UX Principles Applied:**
   * **Alignment & Grouping:** Left-aligned vertical button stack (`Story`, `Bonuses`, `Online Store`, `Options`, `Exit`) with uniform vertical spacing for rapid thumb scanning.
   * **Contrast & Figure-Ground:** Crisp white typography is anchored over the darkest shadowed region of the background artwork to guarantee legibility without heavy box borders.
   * **Visual Hierarchy & Negative Space:** Leaving the right two-thirds of the frame unobstructed preserves the survival-horror environment while drawing focus to the left navigation column.
 - **Tweens & Ease Curves Used:**
-  * **Menu List Fade (`FadeInOnEnable`):** Fades the navigation stack in (`0 -> 1` alpha over `0.6s`) using **EaseInOutSine**.
+  * **Menu List Fade (`FadeInOnEnable`):** Fades the navigation stack in (`0 -> 1` alpha) using **EaseInOutSine**.
   * **RE2 Highlight Shift (`ShiftHighlight`):** Selecting or hovering a menu item shifts the label to the right using **EaseOutCubic** (`1 - (1 - t)^3`), replicating the signature *Resident Evil 2 Remake* active state.
 
 <img src="Docs/Screenshots/02_MainMenu_Annotated.png" width="600">
+
+---
+
+### Screen 03: Story Sub-Menu (`03_StoryMenu.unity`)
+- **Purpose:** Provides campaign management options (`Continue`, `Load Game`, `New Game`, `Costumes`) along with a dedicated `Back` navigation return path.
+- **UI/UX Principles Applied:**
+  * **Visual Hierarchy & Structural Framing:** The bold `+ STORY` header paired with a full-width horizontal divider line immediately establishes current screen context and separates the header from interactive choices[cite: 7].
+  * **Grouping & Proximity:** Campaign actions (`Continue`, `Load Game`, `New Game`, `Costumes`) are grouped with tight vertical spacing, while the `Back` button is isolated below with extra padding to prevent accidental mis-taps.
+  * **Consistency & Dead-End Prevention:** Retains the left-aligned layout and shadowed background from the Main Menu while providing a clear `Back` control to return to `02_MainMenu`.
+- **Tweens & Ease Curves Used:**
+  * **Header & Menu Fade (`FadeInOnEnable`):** Smoothly fades the header line and button stack in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Active or hovered items (such as `Continue`) shift right (`+24px`) using **EaseOutCubic** to indicate selection focus.
+  * **Additive Scene Transition:** Selecting a forward path or tapping `Back` invokes `TransitionScene` using **EaseOutCubic** / **EaseInCubic**.
+
+<img src="Docs/Screenshots/03_StoryMenu_Annotated.png" width="600">
 
 ---
 
