@@ -69,5 +69,21 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 
 ---
 
+### Screen 05: Scenario / Character Select (`05_ScenarioSelect.unity`)
+- **Purpose:** Allows the player to choose their campaign protagonist (`Leon S. Kennedy` or `Claire Redfield`) after selecting `New Game` from the Story Sub-Menu, or return via `Back`.
+- **UI/UX Principles Applied:**
+  * **Consistency & Reusable Layout:** Reuses the top-left header prefab and full-width horizontal divider line to maintain spatial predictability across sub-menus.
+  * **Grouping & Proximity:** Both playable protagonists (`Leon S. Kennedy` and `Claire Redfield`) are paired closely together as equal-weight primary choices, while `Back` is visually separated below to prevent mis-taps.
+  * **Contrast & Negative Space:** Anchors the protagonist choices over the dark stairwell shadow on the left while preserving the atmospheric R.P.D. main hall on the right.
+- **Tweens & Ease Curves Used:**
+  * **Header & Character List Fade (`FadeInOnEnable`):** Fades the scenario header and character options in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Selecting or hovering either protagonist or `Back` shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+  * **Additive Scene Transition:** Selecting a character advances forward (or `Back` returns to `03_StoryMenu`) via the additive `TransitionScene` shutter overlay (**EaseOutCubic** / **EaseInCubic**).
+
+<img src="Docs/Screenshots/05_ScenarioMenu_Annotated.png" width="600">
+
+---
+
 ## Credits & References
 - **UI Visual Direction & Color Palette Inspiration:** *Resident Evil 2 Remake* (Capcom, 2019).
+- **Images & Background:** IGN [link](https://nordic.ign.com/resident-evil-2/15946/e3-2018-resident-evil-2-returns-to-its-horror-roots-in-the-best-way)

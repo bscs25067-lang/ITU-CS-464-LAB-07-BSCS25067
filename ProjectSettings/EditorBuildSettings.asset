@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/04_OptionsMenu.unity
     guid: f13355941fdff80419bf55694a01a954
   - enabled: 1
+    path: Assets/Scenes/05_ScenarioMenu.unity
+    guid: de6c19e2ddaee534d8097d2a2f987320
+  - enabled: 1
+    path: Assets/Scenes/06_GameMenu.unity
+    guid: cb922e6666e9bbd4c9cf7de5020326a4
+  - enabled: 1
     path: Assets/Scenes/TransitionScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
