@@ -1083,6 +1083,10 @@ PrefabInstance:
       value: PF_UI_Button
       objectReference: {fileID: 0}
     - target: {fileID: 2373646231590322552, guid: 0f757322a6ba0bb4db15e794d1bfc35e, type: 3}
+      propertyPath: m_text
+      value: Story
+      objectReference: {fileID: 0}
+    - target: {fileID: 2373646231590322552, guid: 0f757322a6ba0bb4db15e794d1bfc35e, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4288521380
       objectReference: {fileID: 0}
