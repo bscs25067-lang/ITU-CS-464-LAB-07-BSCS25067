@@ -924,10 +924,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UITweenEffects
   fadeMode: 1
-  fadeDuration: 2
+  fadeDuration: 1.5
   startDelay: 4
-  minAlpha: 0.25
-  maxAlpha: 1
+  colorTweenOnEnable: 0
+  targetGraphic: {fileID: 0}
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  endColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.8
+  colorDelay: 0.15
+  enableHighlightShift: 0
+  targetToShift: {fileID: 0}
+  shiftRightDistance: 24
+  shiftDuration: 0.18
 --- !u!225 &979278601
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1138,10 +1146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UITweenEffects
   fadeMode: 1
-  fadeDuration: 3
-  startDelay: 1
-  minAlpha: 0.25
-  maxAlpha: 1
+  fadeDuration: 2
+  startDelay: 2
+  colorTweenOnEnable: 0
+  targetGraphic: {fileID: 0}
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  endColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 0.8
+  colorDelay: 0.15
+  enableHighlightShift: 0
+  targetToShift: {fileID: 0}
+  shiftRightDistance: 24
+  shiftDuration: 0.18
 --- !u!225 &1844732154
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1760,8 +1776,67 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5925724866127055212, guid: 90394827ca46e0949bfe5666a72ee429, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5144726915263773517}
+    - targetCorrespondingSourceObject: {fileID: 5925724866127055212, guid: 90394827ca46e0949bfe5666a72ee429, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5144726915263773516}
   m_SourcePrefab: {fileID: 100100000, guid: 90394827ca46e0949bfe5666a72ee429, type: 3}
+--- !u!1 &5144726915263773515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5925724866127055212, guid: 90394827ca46e0949bfe5666a72ee429, type: 3}
+  m_PrefabInstance: {fileID: 5144726915263773514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5144726915263773516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144726915263773515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e138da4be78ad46a4a688f99b6c7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UITweenEffects
+  fadeMode: 1
+  fadeDuration: 0.6
+  startDelay: 0.15
+  colorTweenOnEnable: 1
+  targetGraphic: {fileID: 5144726915263773518}
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  endColor: {r: 1, g: 1, b: 1, a: 1}
+  colorDuration: 2
+  colorDelay: 0
+  enableHighlightShift: 0
+  targetToShift: {fileID: 0}
+  shiftRightDistance: 24
+  shiftDuration: 0.18
+--- !u!225 &5144726915263773517
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144726915263773515}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5144726915263773518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5874894721946959202, guid: 90394827ca46e0949bfe5666a72ee429, type: 3}
+  m_PrefabInstance: {fileID: 5144726915263773514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144726915263773515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

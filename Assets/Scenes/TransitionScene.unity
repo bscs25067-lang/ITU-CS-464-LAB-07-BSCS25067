@@ -326,7 +326,7 @@ MonoBehaviour:
   fadeCanvasGroup: {fileID: 353381458}
   topShutter: {fileID: 982477713}
   bottomShutter: {fileID: 1154002825}
-  duration: 0.7
+  duration: 0.3
 --- !u!1 &365586448
 GameObject:
   m_ObjectHideFlags: 0
