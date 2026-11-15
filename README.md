@@ -26,7 +26,7 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 ---
 
 ### Screen 02: Main Menu (`02_MainMenu.unity`)
-- **Purpose:** Serves as the central navigation hub connecting Story Mode, Bonuses, Online Store, Options, and Exit[cite: 5].
+- **Purpose:** Serves as the central navigation hub connecting Story Mode, Bonuses, Online Store, Options, and Exit.
 - **UI/UX Principles Applied:**
   * **Alignment & Grouping:** Left-aligned vertical button stack (`Story`, `Bonuses`, `Online Store`, `Options`, `Exit`) with uniform vertical spacing for rapid thumb scanning.
   * **Contrast & Figure-Ground:** Crisp white typography is anchored over the darkest shadowed region of the background artwork to guarantee legibility without heavy box borders.
@@ -42,7 +42,7 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 ### Screen 03: Story Sub-Menu (`03_StoryMenu.unity`)
 - **Purpose:** Provides campaign management options (`Continue`, `Load Game`, `New Game`, `Costumes`) along with a dedicated `Back` navigation return path.
 - **UI/UX Principles Applied:**
-  * **Visual Hierarchy & Structural Framing:** The bold `+ STORY` header paired with a full-width horizontal divider line immediately establishes current screen context and separates the header from interactive choices[cite: 7].
+  * **Visual Hierarchy & Structural Framing:** The bold `+ STORY` header paired with a full-width horizontal divider line immediately establishes current screen context and separates the header from interactive choices.
   * **Grouping & Proximity:** Campaign actions (`Continue`, `Load Game`, `New Game`, `Costumes`) are grouped with tight vertical spacing, while the `Back` button is isolated below with extra padding to prevent accidental mis-taps.
   * **Consistency & Dead-End Prevention:** Retains the left-aligned layout and shadowed background from the Main Menu while providing a clear `Back` control to return to `02_MainMenu`.
 - **Tweens & Ease Curves Used:**
@@ -51,6 +51,21 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
   * **Additive Scene Transition:** Selecting a forward path or tapping `Back` invokes `TransitionScene` using **EaseOutCubic** / **EaseInCubic**.
 
 <img src="Docs/Screenshots/03_StoryMenu_Annotated.png" width="600">
+
+---
+
+### Screen 04: Options / Control Settings (`04_Options.unity`)
+- **Purpose:** Displays system configuration categories (`Controls`, `Camera`, `Display`, `Audio`, `Language`, `Graphics`, `RE NET`, `Default`) alongside a structured sub-panel of Control Settings (`Key Bindings`, `Run Type`, `Mouse Buttons`, `Cursor Lock`, `Auto Reload`, `Controller Vibration`).
+- **UI/UX Principles Applied:**
+  * **Contrast & Readability (Background Dimming):** Because the right-hand settings table spans across the center and right of the screen, the background artwork dynamically fades to near-pure black (`#000000`) so the fine bordered rows and text never clash with background lighting.
+  * **Two-Column Split Hierarchy:** Left column houses primary settings categories while the right column displays the contextual `Control Settings` sub-items inside clean, thin-bordered rectangular rows.
+  * **Grouping & Alignment:** Uniform vertical row height and consistent left text padding across all six `Control Settings` boxes promote effortless horizontal and vertical scanning.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTweenOnEnable`):** Tweens the background image from full brightness (`#FFFFFF`) down to dark black (`#000000`) using **EaseInOutSine**, prioritizing text contrast and legibility.
+  * **Panel & Row Fade (`FadeInOnEnable`):** Fades the `+ OPTIONS` header, left category list, and right `Control Settings` bordered table in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Active category (`Controls`) and hovered rows shift right (`+24px`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+
+<img src="Docs/Screenshots/04_OptionsMenu_Annotated.png" width="600">
 
 ---
 

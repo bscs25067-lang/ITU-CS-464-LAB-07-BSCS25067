@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf309c8243eac646bffe6c45b8dc20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneNavButton
-  targetSceneName: EXIT
+  targetSceneName: NOTHING
 --- !u!1 &1301992950990407209
 GameObject:
   m_ObjectHideFlags: 0
