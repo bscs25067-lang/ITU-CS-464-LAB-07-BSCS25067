@@ -30,6 +30,10 @@ public class UIPanelSwitcher : MonoBehaviour
 
     [SerializeField] private GameObject conceptArtMenuPanel;
     [SerializeField] private bool conceptArtMenuRequiresBlackBg = true; // Fade to black
+    [SerializeField] private GameObject recordsMenuPanel;
+    [SerializeField] private bool recordsMenuRequiresBlackBg = true; // Fade to black
+    [SerializeField] private GameObject difficultyMenuPanel;
+    [SerializeField] private bool difficultyMenuRequiresBlackBg = true; // Fade to black
 
     private Stack<(GameObject panel, bool needsBlackBg)> panelHistory = new Stack<(GameObject, bool)>();
     private GameObject currentActivePanel;
@@ -65,6 +69,8 @@ public class UIPanelSwitcher : MonoBehaviour
     public void OpenCostumesMenu() => OpenPanelWithOptions(costumesMenuPanel, costumesMenuRequiresBlackBg);
     public void OpenBonusesMenu() => OpenPanelWithOptions(bonusesMenuPanel, bonusesMenuRequiresBlackBg);
     public void OpenConceptArtMenu() => OpenPanelWithOptions(conceptArtMenuPanel, conceptArtMenuRequiresBlackBg);
+    public void OpenRecordsMenu() => OpenPanelWithOptions(recordsMenuPanel, recordsMenuRequiresBlackBg);
+    public void OpenDifficultyMenu() => OpenPanelWithOptions(difficultyMenuPanel, difficultyMenuRequiresBlackBg);
 
     public void GoBack()
     {
