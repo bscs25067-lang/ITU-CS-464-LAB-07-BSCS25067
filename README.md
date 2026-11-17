@@ -84,6 +84,21 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 
 ---
 
+### Screen 06: Costumes Menu (`06_CostumesMenu.unity`)
+- **Purpose:** Allows players to preview and select character alternative cosmetic appearances (`Story Outfits`, `Normal Outfits`, `Alternative Outfits`) or return via `Back`[cite: 17].
+- **UI/UX Principles Applied:**
+  * **Consistency & Visual Hierarchy:** Reuses the established `PF_HeaderBar` prefab and full-width horizontal rule (`+ COSTUMES`) to preserve structural continuity from the Story Sub-Menu[cite: 17].
+  * **Contrast & Readability (Solid Dark Backdrop):** Keeps the background faded to pure black (`#000000`) matching the Options menu to provide a clean, uncluttered presentation for outfit categories[cite: 17].
+  * **Grouping & Proximity:** Outfit categories are grouped tightly with uniform vertical list spacing, with the `Back` button isolated at the bottom for quick, unambiguous exit navigation[cite: 17].
+- **Tweens & Ease Curves Used:**
+  * **Panel Fade (`FadeInOnEnable`):** Fades the header and costume list in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting any outfit category or the `Back` button shifts the label to the right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`)[cite: 17].
+  * **Panel Switcher Transition:** Opening or exiting this menu triggers smooth alpha cross-fading managed by `UIPanelSwitcher`[cite: 17].
+
+<img src="Docs/Screenshots/06_CostumesMenu_Annotated.png" width="600">
+
+---
+
 ## Credits & References
 - **UI Visual Direction & Color Palette Inspiration:** *Resident Evil 2 Remake* (Capcom, 2019).
 - **Images & Background:** IGN [link](https://nordic.ign.com/resident-evil-2/15946/e3-2018-resident-evil-2-returns-to-its-horror-roots-in-the-best-way)
