@@ -22,6 +22,9 @@ public class UIPanelSwitcher : MonoBehaviour
     [SerializeField] private GameObject scenarioMenuPanel;
     [SerializeField] private bool scenarioMenuRequiresBlackBg = false;
 
+    [SerializeField] private GameObject bonusesMenuPanel;
+    [SerializeField] private bool bonusesMenuRequiresBlackBg = true; // Fade to black
+
     [SerializeField] private GameObject costumesMenuPanel;
     [SerializeField] private bool costumesMenuRequiresBlackBg = true; // Fade to black
 
@@ -57,6 +60,7 @@ public class UIPanelSwitcher : MonoBehaviour
     public void OpenOptions() => OpenPanelWithOptions(optionsMenuPanel, optionsMenuRequiresBlackBg);
     public void OpenScenarioMenu() => OpenPanelWithOptions(scenarioMenuPanel, scenarioMenuRequiresBlackBg);
     public void OpenCostumesMenu() => OpenPanelWithOptions(costumesMenuPanel, costumesMenuRequiresBlackBg);
+    public void OpenBonusesMenu() => OpenPanelWithOptions(bonusesMenuPanel, bonusesMenuRequiresBlackBg);
 
     public void GoBack()
     {
