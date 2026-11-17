@@ -114,6 +114,21 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
 
 ---
 
+### Screen 08: Concept Art Gallery (`Concept Art Menu Canvas`)
+- **Purpose:** Displays an unlockable archive grid of concept art thumbnails accessed from the `Bonuses` sub-menu, with a top-left `Back` control to return to `Bonuses Menu Canvas`.
+- **UI/UX Principles Applied:**
+  * **Grid Alignment & Spacing:** Uses a structured 7-column `GridLayoutGroup` with uniform rectangular thumbnail cells and consistent `8px` gutters for clean visual scanning and large mobile touch targets.
+  * **Contrast & Figure-Ground (Background Dimming):** Transitions the background to pure black (`requiresBlackBg = true`) so gallery thumbnails and grid borders stand out without competing against background environmental lighting.
+  * **Visual Hierarchy & Escape Affordance:** Places the `Back` button directly beneath the `• CONCEPT ART` header and above the thumbnail matrix so players can exit immediately without scrolling to the bottom of the grid.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background canvas from `#FFFFFF` to `#000000` over `0.5s` using **EaseInOutSine**.
+  * **Gallery Grid Fade (`FadeInOnEnable`):** Fades the header, `Back` button, and thumbnail grid in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting the `Back` control shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic**.
+
+<img src="Docs/Screenshots/08_ConceptArtMenu_Annotated.png" width="600">
+
+---
+
 ## Credits & References
 - **UI Visual Direction & Color Palette Inspiration:** *Resident Evil 2 Remake* (Capcom, 2019).
 - **Images & Background:** IGN [link](https://nordic.ign.com/resident-evil-2/15946/e3-2018-resident-evil-2-returns-to-its-horror-roots-in-the-best-way)
