@@ -8,6 +8,18 @@
 ## Project Overview & Architecture
 This repository contains a 10-screen mobile UI/UX menu system built in Unity, inspired by the sleek survival-horror tactical interface of *Resident Evil 2 Remake*. All menu screens are structured as modular Canvases managed by `UIPanelSwitcher` with a stack-based navigation history and dynamic background dimming.
 
+### Demo Video
+* **Navigation & Transitions Demo Video:** [Insert Demo Video Link Here]
+
+### How to Run the Project
+1. Clone this repository (`ITU-CS-464-LAB-07-BSCS25067`).
+2. Open the project folder in **Unity Hub** (Unity 6 / 2022.3 LTS or newer).
+3. Open the main menu scene in `Assets/Scenes/`.
+4. Set the Game View aspect ratio to **16:9 Landscape (`1920x1080`)** or switch to the **Unity Device Simulator**.
+5. Press **Play** and start from the `Title Menu Canvas` (`TAP TO START`) to navigate through all 10 connected screens.
+
+---
+
 ## Screen-by-Screen Design Documentation
 
 ### Screen 01: Title / Splash Screen (`Title Menu Canvas`)
@@ -126,6 +138,36 @@ This repository contains a 10-screen mobile UI/UX menu system built in Unity, in
   * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting the `Back` control shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic**.
 
 <img src="Docs/Screenshots/08_ConceptArtMenu_Annotated.png" width="600">
+
+---
+
+### Screen 09: Records / Achievements Archive (`Records Menu Canvas`)
+- **Purpose:** Displays in-game challenges and completion milestones (`Racoon City Native`, `Welcome to the City of the Dead`, `Path to the Goddess`, `Never Ending Rain`, `Hack Complete`, `Hide and Seek`, `A Great Need for a Shower`, `Survival`) alongside an inspection panel showing unlock conditions and rewards.
+- **UI/UX Principles Applied:**
+  * **Master-Detail Split Hierarchy:** Divides the layout into a scrollable achievement list on the left and a contextual inspector pane (`Conditions` and `Rewards` with preview thumbnails) on the right, separated by a vertical scroll track.
+  * **Affordances & State Feedback:** Each bordered record row includes a left-aligned checkbox indicator clearly distinguishing completed challenges (checked) from incomplete ones (unchecked).
+  * **Contrast & Consistency:** Uses a pure black backdrop (`requiresBlackBg = true`) and reuses the `PF_HeaderBar` (`• RECORDS`) with a top-left `Back` button for immediate return to `Bonuses Menu Canvas`.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background canvas to pure black (`#000000`) over `0.5s` using **EaseInOutSine** to maximize text legibility across both columns.
+  * **Panel & Split-View Fade (`FadeInOnEnable`):** Fades the header, record rows, and right-hand inspector panel in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting the `Back` button or record items shifts the element right (`+24px` over `0.18s`) using **EaseOutCubic**.
+
+<img src="Docs/Screenshots/09_RecordsMenu_Annotated.png" width="600">
+
+---
+
+### Screen 10: Difficulty Select (`Difficulty Menu Canvas`)
+- **Purpose:** Prompts the player to choose the campaign challenge level (`Assisted`, `Normal`, `Hardcore`) after selecting a protagonist in `Scenario Menu Canvas`.
+- **UI/UX Principles Applied:**
+  * **Visual Hierarchy & Focal Centering:** Shifts from the left-aligned exploration layout to a center-anchored composition (`Middle-Center` anchor) with a bold `Difficulty` header to emphasize a pivotal pre-game commitment.
+  * **Grouping & Progression:** Stacks the three difficulty tiers (`Assisted`, `Normal`, `Hardcore`) vertically in ascending order of difficulty with generous touch-target spacing.
+  * **Contrast & Isolation (Background Dimming):** Fades the background canvas to pure black (`#000000`) to eliminate environmental distractions and focus attention entirely on the difficulty choice.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background artwork from `#FFFFFF` to `#000000` over `0.5s` using **EaseInOutSine**.
+  * **Difficulty Stack Fade (`FadeInOnEnable`):** Fades the centered `Difficulty` header and tier stack in (`0 -> 1` alpha over `0.6s`) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting a difficulty tier shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+
+<img src="Docs/Screenshots/10_DifficultyMenu_Annotated.png" width="600">
 
 ---
 
