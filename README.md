@@ -1,1 +1,176 @@
 # ITU-CS-464-LAB-07-BSCS25067
+**Student Name:** Abdullah Saeed  
+**Roll Number:** BSCS25067  
+**Inspiration & Visual Reference:** *Resident Evil 2 Remake* (Capcom)
+
+---
+
+## Project Overview & Architecture
+This repository contains a 10-screen mobile UI/UX menu system built in Unity, inspired by the sleek survival-horror tactical interface of *Resident Evil 2 Remake*. All menu screens are structured as modular Canvases managed by `UIPanelSwitcher` with a stack-based navigation history and dynamic background dimming.
+
+### Demo Video
+* **Navigation & Transitions Demo Video:** [Insert Demo Video Link Here]
+
+### How to Run the Project
+1. Clone this repository (`ITU-CS-464-LAB-07-BSCS25067`).
+2. Open the project folder in **Unity Hub** (Unity 6 / 2022.3 LTS or newer).
+3. Open the main menu scene in `Assets/Scenes/`.
+4. Set the Game View aspect ratio to **16:9 Landscape (`1920x1080`)** or switch to the **Unity Device Simulator**.
+5. Press **Play** and start from the `Title Menu Canvas` (`TAP TO START`) to navigate through all 10 connected screens.
+
+---
+
+## Screen-by-Screen Design Documentation
+
+### Screen 01: Title / Splash Screen (`Title Menu Canvas`)
+- **Purpose:** Establishes the survival-horror R.P.D. terminal tone and provides a clear entry point into the main menu.
+- **UI/UX Principles Applied:**
+  * **Color & Contrast:** Deep slate background paired with high-contrast white text and Biohazard Crimson accents for the RE emblem.
+  * **Visual Hierarchy:** Bold, center-weighted title dominates the screen while secondary system metadata is subdued in grey.
+  * **Affordances & Touch Targets:** Full-screen invisible button creates an unmistakable, thumb-friendly tap zone.
+- **Tweens & Ease Curves Used:**
+  * **Title Logo (`FadeInOnEnable`):** Fades in (`0 -> 1` alpha over `0.65s`) using **EaseInOutSine** for a smooth, atmospheric reveal.
+  * **Start Prompt (`FadeInOutLoop`):** Fades in after a brief delay, then loops continuously between `0.25 <-> 1.0` alpha using **EaseInOutSine** to signal interactivity.
+  * **Panel Transition:** Tapping anywhere cross-fades smoothly into the Main Menu via `UIPanelSwitcher`.
+
+<img src="Docs/Screenshots/01_Title_Annotated.png" width="600">
+
+---
+
+### Screen 02: Main Menu (`Main Menu Canvas`)
+- **Purpose:** Serves as the central navigation hub connecting Story Mode, Bonuses, Online Store, Options, and Exit.
+- **UI/UX Principles Applied:**
+  * **Alignment & Grouping:** Left-aligned vertical button stack (`Story`, `Bonuses`, `Online Store`, `Options`, `Exit`) with uniform vertical spacing for rapid thumb scanning.
+  * **Contrast & Figure-Ground:** Crisp white typography is anchored over the darkest shadowed region of the background artwork to guarantee legibility without heavy box borders.
+  * **Visual Hierarchy & Negative Space:** Leaving the right two-thirds of the frame unobstructed preserves the survival-horror environment while drawing focus to the left navigation column.
+- **Tweens & Ease Curves Used:**
+  * **Menu List Fade (`FadeInOnEnable`):** Fades the navigation stack in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Selecting or hovering a menu item shifts the label to the right using **EaseOutCubic** (`1 - (1 - t)^3`), replicating the signature *Resident Evil 2 Remake* active state.
+
+<img src="Docs/Screenshots/02_MainMenu_Annotated.png" width="600">
+
+---
+
+### Screen 03: Story Sub-Menu (`Story Menu Canvas`)
+- **Purpose:** Provides campaign management options (`Continue`, `Load Game`, `New Game`, `Costumes`) along with a dedicated `Back` navigation return path.
+- **UI/UX Principles Applied:**
+  * **Visual Hierarchy & Structural Framing:** The bold `+ STORY` header paired with a full-width horizontal divider line immediately establishes current screen context and separates the header from interactive choices.
+  * **Grouping & Proximity:** Campaign actions (`Continue`, `Load Game`, `New Game`, `Costumes`) are grouped with tight vertical spacing, while the `Back` button is isolated below with extra padding to prevent accidental mis-taps.
+  * **Consistency & Dead-End Prevention:** Retains the left-aligned layout and shadowed background from the Main Menu while providing a clear `Back` control to return to `Main Menu Canvas`.
+- **Tweens & Ease Curves Used:**
+  * **Header & Menu Fade (`FadeInOnEnable`):** Smoothly fades the header line and button stack in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Active or hovered items (such as `Continue`) shift right (`+24px`) using **EaseOutCubic** to indicate selection focus.
+  * **Panel Switcher Transition:** Selecting a forward path or tapping `Back` cross-fades panels using **EaseInOutSine**.
+
+<img src="Docs/Screenshots/03_StoryMenu_Annotated.png" width="600">
+
+---
+
+### Screen 04: Options / Control Settings (`Options Menu Canvas`)
+- **Purpose:** Displays system configuration categories (`Controls`, `Camera`, `Display`, `Audio`, `Language`, `Graphics`, `RE NET`, `Default`) alongside a structured sub-panel of Control Settings (`Key Bindings`, `Run Type`, `Mouse Buttons`, `Cursor Lock`, `Auto Reload`, `Controller Vibration`).
+- **UI/UX Principles Applied:**
+  * **Contrast & Readability (Background Dimming):** Because the right-hand settings table spans across the center and right of the screen, the background artwork dynamically fades to near-pure black (`#000000`) so the fine bordered rows and text never clash with background lighting.
+  * **Two-Column Split Hierarchy:** Left column houses primary settings categories while the right column displays the contextual `Control Settings` sub-items inside clean, thin-bordered rectangular rows.
+  * **Grouping & Alignment:** Uniform vertical row height and consistent left text padding across all six `Control Settings` boxes promote effortless horizontal and vertical scanning.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Tweens the background image from full brightness (`#FFFFFF`) down to dark black (`#000000`) using **EaseInOutSine**, prioritizing text contrast and legibility.
+  * **Panel & Row Fade (`FadeInOnEnable`):** Fades the `+ OPTIONS` header, left category list, and right `Control Settings` bordered table in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Active category (`Controls`) and hovered rows shift right (`+24px`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+
+<img src="Docs/Screenshots/04_OptionsMenu_Annotated.png" width="600">
+
+---
+
+### Screen 05: Scenario / Character Select (`Scenario Menu Canvas`)
+- **Purpose:** Allows the player to choose their campaign protagonist (`Leon S. Kennedy` or `Claire Redfield`) after selecting `New Game` from the Story Sub-Menu, or return via `Back`.
+- **UI/UX Principles Applied:**
+  * **Consistency & Reusable Layout:** Reuses the top-left header prefab and full-width horizontal divider line to maintain spatial predictability across sub-menus.
+  * **Grouping & Proximity:** Both playable protagonists (`Leon S. Kennedy` and `Claire Redfield`) are paired closely together as equal-weight primary choices, while `Back` is visually separated below to prevent mis-taps.
+  * **Contrast & Negative Space:** Anchors the protagonist choices over the dark stairwell shadow on the left while preserving the atmospheric R.P.D. main hall on the right.
+- **Tweens & Ease Curves Used:**
+  * **Header & Character List Fade (`FadeInOnEnable`):** Fades the scenario header and character options in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Selecting or hovering either protagonist or `Back` shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+  * **Panel Switcher Transition:** Selecting a character advances forward (or `Back` returns to `Story Menu Canvas`) via smooth alpha cross-fading.
+
+<img src="Docs/Screenshots/05_ScenarioMenu_Annotated.png" width="600">
+
+---
+
+### Screen 06: Costumes Menu (`Costumes Menu Canvas`)
+- **Purpose:** Allows players to preview and select character alternative cosmetic appearances (`Story Outfits`, `Normal Outfits`, `Alternative Outfits`) or return via `Back`.
+- **UI/UX Principles Applied:**
+  * **Consistency & Visual Hierarchy:** Reuses the established `PF_HeaderBar` prefab and full-width horizontal rule (`+ COSTUMES`) to preserve structural continuity from the Story Sub-Menu.
+  * **Contrast & Readability (Solid Dark Backdrop):** Keeps the background faded to pure black (`#000000`) matching the Options menu to provide a clean, uncluttered presentation for outfit categories.
+  * **Grouping & Proximity:** Outfit categories are grouped tightly with uniform vertical list spacing, with the `Back` button isolated at the bottom for quick, unambiguous exit navigation.
+- **Tweens & Ease Curves Used:**
+  * **Panel Fade (`FadeInOnEnable`):** Fades the header and costume list in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting any outfit category or the `Back` button shifts the label to the right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+  * **Panel Switcher Transition:** Opening or exiting this menu triggers smooth alpha cross-fading and background color tweening managed by `UIPanelSwitcher`.
+
+<img src="Docs/Screenshots/06_CostumesMenu_Annotated.png" width="600">
+
+---
+
+### Screen 07: Bonuses Menu (`Bonuses Menu Canvas`)
+- **Purpose:** Provides access to extra post-campaign survival modes (`The 4th Survivor`, `The Tofu Survivor`, `The Ghost Survivors`) and unlockable archives (`Concept Art`, `Records`), with a `Back` path to the Main Menu.
+- **UI/UX Principles Applied:**
+  * **Consistency & Visual Hierarchy:** Reuses the `PF_HeaderBar` (`• BONUSES`) and horizontal rule so players immediately recognize the sub-menu structure.
+  * **Grouping & Proximity:** Extra gameplay modes and archive viewers are grouped in a left-aligned vertical stack with uniform spacing, while `Back` is separated below with extra vertical margin to prevent mis-taps.
+  * **Contrast & Figure-Ground:** Restores the atmospheric R.P.D. background (`requiresBlackBg = false`) while anchoring the white typography over the dark left stairwell shadow for high contrast.
+- **Tweens & Ease Curves Used:**
+  * **Header & List Fade (`FadeInOnEnable`):** Smoothly fades the header and bonus mode options in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting any bonus mode shifts the text right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+  * **Panel Switcher Transition:** Selecting an archive item or tapping `Back` cross-fades smoothly via `UIPanelSwitcher`.
+
+<img src="Docs/Screenshots/07_BonusesMenu_Annotated.png" width="600">
+
+---
+
+### Screen 08: Concept Art Gallery (`Concept Art Menu Canvas`)
+- **Purpose:** Displays an unlockable archive grid of concept art thumbnails accessed from the `Bonuses` sub-menu, with a top-left `Back` control to return to `Bonuses Menu Canvas`.
+- **UI/UX Principles Applied:**
+  * **Grid Alignment & Spacing:** Uses a structured 7-column `GridLayoutGroup` with uniform rectangular thumbnail cells and consistent `8px` gutters for clean visual scanning and large mobile touch targets.
+  * **Contrast & Figure-Ground (Background Dimming):** Transitions the background to pure black (`requiresBlackBg = true`) so gallery thumbnails and grid borders stand out without competing against background environmental lighting.
+  * **Visual Hierarchy & Escape Affordance:** Places the `Back` button directly beneath the `• CONCEPT ART` header and above the thumbnail matrix so players can exit immediately without scrolling to the bottom of the grid.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background canvas from `#FFFFFF` to `#000000` over `0.5s` using **EaseInOutSine**.
+  * **Gallery Grid Fade (`FadeInOnEnable`):** Fades the header, `Back` button, and thumbnail grid in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting the `Back` control shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic**.
+
+<img src="Docs/Screenshots/08_ConceptArtMenu_Annotated.png" width="600">
+
+---
+
+### Screen 09: Records / Achievements Archive (`Records Menu Canvas`)
+- **Purpose:** Displays in-game challenges and completion milestones (`Racoon City Native`, `Welcome to the City of the Dead`, `Path to the Goddess`, `Never Ending Rain`, `Hack Complete`, `Hide and Seek`, `A Great Need for a Shower`, `Survival`) alongside an inspection panel showing unlock conditions and rewards.
+- **UI/UX Principles Applied:**
+  * **Master-Detail Split Hierarchy:** Divides the layout into a scrollable achievement list on the left and a contextual inspector pane (`Conditions` and `Rewards` with preview thumbnails) on the right, separated by a vertical scroll track.
+  * **Affordances & State Feedback:** Each bordered record row includes a left-aligned checkbox indicator clearly distinguishing completed challenges (checked) from incomplete ones (unchecked).
+  * **Contrast & Consistency:** Uses a pure black backdrop (`requiresBlackBg = true`) and reuses the `PF_HeaderBar` (`• RECORDS`) with a top-left `Back` button for immediate return to `Bonuses Menu Canvas`.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background canvas to pure black (`#000000`) over `0.5s` using **EaseInOutSine** to maximize text legibility across both columns.
+  * **Panel & Split-View Fade (`FadeInOnEnable`):** Fades the header, record rows, and right-hand inspector panel in (`0 -> 1` alpha) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting the `Back` button or record items shifts the element right (`+24px` over `0.18s`) using **EaseOutCubic**.
+
+<img src="Docs/Screenshots/09_RecordsMenu_Annotated.png" width="600">
+
+---
+
+### Screen 10: Difficulty Select (`Difficulty Menu Canvas`)
+- **Purpose:** Prompts the player to choose the campaign challenge level (`Assisted`, `Normal`, `Hardcore`) after selecting a protagonist in `Scenario Menu Canvas`.
+- **UI/UX Principles Applied:**
+  * **Visual Hierarchy & Focal Centering:** Shifts from the left-aligned exploration layout to a center-anchored composition (`Middle-Center` anchor) with a bold `Difficulty` header to emphasize a pivotal pre-game commitment.
+  * **Grouping & Progression:** Stacks the three difficulty tiers (`Assisted`, `Normal`, `Hardcore`) vertically in ascending order of difficulty with generous touch-target spacing.
+  * **Contrast & Isolation (Background Dimming):** Fades the background canvas to pure black (`#000000`) to eliminate environmental distractions and focus attention entirely on the difficulty choice.
+- **Tweens & Ease Curves Used:**
+  * **Background Fade-to-Black (`ColorTween`):** Smoothly transitions the background artwork from `#FFFFFF` to `#000000` over `0.5s` using **EaseInOutSine**.
+  * **Difficulty Stack Fade (`FadeInOnEnable`):** Fades the centered `Difficulty` header and tier stack in (`0 -> 1` alpha over `0.6s`) using **EaseInOutSine**.
+  * **RE2 Highlight Shift (`ShiftHighlight`):** Hovering or selecting a difficulty tier shifts the label right (`+24px` over `0.18s`) using **EaseOutCubic** (`1 - (1 - t)^3`).
+
+<img src="Docs/Screenshots/10_DifficultyMenu_Annotated.png" width="600">
+
+---
+
+## Credits & References
+- **UI Visual Direction & Color Palette Inspiration:** *Resident Evil 2 Remake* (Capcom, 2019).
+- **Images & Background:** IGN [link](https://nordic.ign.com/resident-evil-2/15946/e3-2018-resident-evil-2-returns-to-its-horror-roots-in-the-best-way)
